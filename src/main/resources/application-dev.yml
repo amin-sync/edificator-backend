@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/edificators?useSSL=false&createDatabaseIfNotExist=true
+    username: root
+    password: mace7
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
+profile:
+  pic:
+    host: http://192.168.100.5:${SERVER_PORT}/profiles/
