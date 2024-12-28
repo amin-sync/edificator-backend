@@ -199,10 +199,12 @@ public class QuizServiceImpl implements QuizService {
                 response.setAnswer1Id(answerList.get(0).getId());
                 response.setAnswer2(answerList.get(1).getAnswer());
                 response.setAnswer2Id(answerList.get(1).getId());
-                response.setAnswer3(answerList.get(2).getAnswer());
-                response.setAnswer3Id(answerList.get(2).getId());
-                response.setAnswer4(answerList.get(3).getAnswer());
-                response.setAnswer4Id(answerList.get(3).getId());
+                if (answerList.size() == 4) { // MCQ
+                    response.setAnswer3(answerList.get(2).getAnswer());
+                    response.setAnswer3Id(answerList.get(2).getId());
+                    response.setAnswer4(answerList.get(3).getAnswer());
+                    response.setAnswer4Id(answerList.get(3).getId());
+                }
                 response.setDuration(quiz.getDuration());
                 responseList.add(response);
             }
@@ -223,7 +225,7 @@ public class QuizServiceImpl implements QuizService {
         Student student = studentRepo.getReferenceById(request.getStudentId());
         submission.setStudent(student);
 
-        if(request.getQuestionAnwerList().isEmpty()){
+        if (request.getQuestionAnwerList().isEmpty()) {
             submission.setStatus(QuizStatus.SUBMITTED);
             submission.setMarks("0");
             quizSubmissionRepo.save(submission);
