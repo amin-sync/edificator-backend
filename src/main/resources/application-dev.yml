@@ -14,4 +14,4 @@ spring:
 
 profile:
   pic:
-    host: http://192.168.100.5:${SERVER_PORT}/profiles/
+    host: http://192.168.102.224:${SERVER_PORT}/profiles/
